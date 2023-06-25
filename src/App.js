@@ -8,6 +8,7 @@ import { initialFriends } from "./data";
 function App() {
   const [friends, setFriends] = useState(initialFriends);
   const [showAddFriend, setShowAddFriend] = useState(false);
+  const [selectedFriend, setSelectedFriend] = useState(null);
 
   const handleClick = () => {
     setShowAddFriend((prevState) => !prevState);
@@ -18,16 +19,28 @@ function App() {
     setShowAddFriend(false);
   };
 
+  const handleSelection = (friend) => {
+    // setSelectedFriend(friend);
+    setSelectedFriend((currentState) =>
+      currentState?.id === friend?.id ? null : friend
+    );
+    setShowAddFriend(false);
+  };
+
   return (
     <div className="app">
       <div className="sidebar">
-        <ListOfFriends friends={friends} />
+        <ListOfFriends
+          friends={friends}
+          selectedFriend={selectedFriend}
+          handleSelection={handleSelection}
+        />
         {showAddFriend && <AddFriendForm handleAddFriend={handleAddFriend} />}
         <Button handleClick={handleClick}>
           {showAddFriend ? "Close" : "Add Friend"}
         </Button>
       </div>
-      <FormBill />
+      {selectedFriend && <FormBill selectedFriend={selectedFriend} />}
     </div>
   );
 }
