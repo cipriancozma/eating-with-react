@@ -1,3 +1,5 @@
+![image](https://github.com/cipriancozma/eating-with-react/assets/38767799/bd04dcc9-f52b-4f3b-8632-20c87c6abf58)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
